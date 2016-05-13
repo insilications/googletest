@@ -4,7 +4,7 @@
 #
 Name     : googletest
 Version  : d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0
-Release  : 1
+Release  : 2
 URL      : https://github.com/google/googletest/archive/d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0.tar.gz
 Source0  : https://github.com/google/googletest/archive/d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0.tar.gz
 Summary  : No detailed summary available
@@ -46,6 +46,9 @@ rm -rf %{buildroot}
 pushd clr-build
 %make_install
 popd
+## make_install_append content
+mv %{buildroot}/usr/lib %{buildroot}/usr/lib64
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -103,4 +106,4 @@ popd
 /usr/include/gtest/internal/gtest-tuple.h.pump
 /usr/include/gtest/internal/gtest-type-util.h
 /usr/include/gtest/internal/gtest-type-util.h.pump
-/usr/lib/*.so
+/usr/lib64/*.so
