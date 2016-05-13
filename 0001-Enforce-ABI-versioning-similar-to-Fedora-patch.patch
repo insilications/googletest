@@ -1,0 +1,27 @@
+From 217440e4d2f8a32358a5c12261a6b4cdc4de06dd Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <michael.i.doherty@intel.com>
+Date: Fri, 13 May 2016 15:27:43 +0100
+Subject: [PATCH] Enforce ABI versioning, similar to Fedora patch
+
+Signed-off-by: Ikey Doherty <michael.i.doherty@intel.com>
+---
+ googletest/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/googletest/CMakeLists.txt b/googletest/CMakeLists.txt
+index 621d0f0..a8b54b8 100644
+--- a/googletest/CMakeLists.txt
++++ b/googletest/CMakeLists.txt
+@@ -88,7 +88,9 @@ endif()
+ # are used for other targets, to ensure that gtest can be compiled by a user
+ # aggressive about warnings.
+ cxx_library(gtest "${cxx_strict}" src/gtest-all.cc)
++set_target_properties(gtest PROPERTIES VERSION 0.0.0 SOVERSION 0)
+ cxx_library(gtest_main "${cxx_strict}" src/gtest_main.cc)
++set_target_properties(gtest_main PROPERTIES VERSION 0.0.0 SOVERSION 0)
+ target_link_libraries(gtest_main gtest)
+ 
+ # If the CMake version supports it, attach header directory information
+-- 
+2.8.2
+
