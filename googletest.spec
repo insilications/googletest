@@ -4,7 +4,7 @@
 #
 Name     : googletest
 Version  : d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0
-Release  : 2
+Release  : 3
 URL      : https://github.com/google/googletest/archive/d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0.tar.gz
 Source0  : https://github.com/google/googletest/archive/d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0.tar.gz
 Summary  : No detailed summary available
@@ -31,7 +31,7 @@ dev components for the googletest package.
 %build
 mkdir clr-build
 pushd clr-build
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir}
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DBUILD_GMOCK=1 -DGTEST_CREATE_SHARED_LIBRARY=1 -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -Dgtest_build_samples=ON
 make V=1  %{?_smp_mflags}
 popd
 
