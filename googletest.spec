@@ -4,13 +4,15 @@
 #
 Name     : googletest
 Version  : d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0
-Release  : 3
+Release  : 4
 URL      : https://github.com/google/googletest/archive/d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0.tar.gz
 Source0  : https://github.com/google/googletest/archive/d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause
+Requires: googletest-lib
 BuildRequires : cmake
+Patch1: 0001-Enforce-ABI-versioning-similar-to-Fedora-patch.patch
 
 %description
 The Google Mock class generator is an application that is part of cppclean.
@@ -19,14 +21,24 @@ visit http://code.google.com/p/cppclean/
 %package dev
 Summary: dev components for the googletest package.
 Group: Development
+Requires: googletest-lib
 Provides: googletest-devel
 
 %description dev
 dev components for the googletest package.
 
 
+%package lib
+Summary: lib components for the googletest package.
+Group: Libraries
+
+%description lib
+lib components for the googletest package.
+
+
 %prep
 %setup -q -n googletest-d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0
+%patch1 -p1
 
 %build
 mkdir clr-build
@@ -107,3 +119,7 @@ mv %{buildroot}/usr/lib %{buildroot}/usr/lib64
 /usr/include/gtest/internal/gtest-type-util.h
 /usr/include/gtest/internal/gtest-type-util.h.pump
 /usr/lib64/*.so
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/*.so.*
