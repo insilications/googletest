@@ -4,7 +4,7 @@
 #
 Name     : googletest
 Version  : d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0
-Release  : 5
+Release  : 6
 URL      : https://github.com/google/googletest/archive/d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0.tar.gz
 Source0  : https://github.com/google/googletest/archive/d225acc90bc3a8c420a9bcd1f033033c1ccd7fe0.tar.gz
 Summary  : No detailed summary available
