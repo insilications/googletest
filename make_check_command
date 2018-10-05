@@ -1,0 +1,1 @@
+cd clr-build; make test
